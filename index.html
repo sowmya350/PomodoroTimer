@@ -5,42 +5,43 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Focus Clock — Pomodoro Timer</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏰</text></svg>">
 </head>
 <body>
   <div class="wrap">
-    <section class="card">
+    <section class="card main-timer-card">
       <header>
-        <div class="logo">FC</div>
+        <div class="logo" aria-label="Focus Clock Logo">FC</div>
         <div>
           <h1>Focus Clock — Pomodoro Timer</h1>
           <p class="lead">Simple Pomodoro-style focus timer with a small task list.</p>
         </div>
       </header>
 
-      <div class="timer" id="timerCard" style="margin-top:18px">
-        <div class="time" id="display">25:00</div>
-        <div class="small" id="status">Ready</div>
+      <div class="timer" id="timerCard">
+        <div class="time" id="display" aria-live="assertive" aria-label="Current time display">25:00</div>
+        <div class="small" id="status" aria-live="polite">Ready</div>
         <div class="controls">
-          <button id="startBtn" class="primary">Start</button>
-          <button id="pauseBtn" class="ghost">Pause</button>
-          <button id="resetBtn" class="ghost">Reset</button>
+          <button id="startBtn" class="primary" aria-label="Start Timer">Start</button>
+          <button id="pauseBtn" class="ghost" aria-label="Pause Timer">Pause</button>
+          <button id="resetBtn" class="ghost" aria-label="Reset Timer">Reset</button>
         </div>
 
-        <div style="width:100%;margin-top:12px">
+        <div class="timer-controls-group">
           <div class="small">Presets</div>
-          <div class="presets" style="margin-top:8px">
-            <div class="preset" data-min="25">25 min</div>
-            <div class="preset" data-min="15">15 min</div>
-            <div class="preset" data-min="5">5 min</div>
-            <div class="preset" data-min="50">Deep 50</div>
+          <div class="presets">
+            <div class="preset" data-min="25" role="button" tabindex="0">25 min</div>
+            <div class="preset" data-min="15" role="button" tabindex="0">15 min</div>
+            <div class="preset" data-min="5" role="button" tabindex="0">5 min</div>
+            <div class="preset" data-min="50" role="button" tabindex="0">Deep 50</div>
           </div>
         </div>
       </div>
 
-      <div style="margin-top:18px">
-        <div class="small">Customize time</div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <input id="minutesInput" type="number" min="1" max="240" value="25" />
+      <div class="custom-time-input">
+        <div class="small">Customize time (minutes)</div>
+        <div class="input-group">
+          <input id="minutesInput" type="number" min="1" max="240" value="25" aria-label="Set custom minutes" />
           <button id="setBtn" class="ghost">Set</button>
         </div>
       </div>
@@ -48,14 +49,14 @@
       <footer class="small">Open this file in a browser to use the timer. Works fully offline.</footer>
     </section>
 
-    <aside class="card">
-      <h2 style="margin-top:0;margin-bottom:8px">Tasks</h2>
+    <aside class="card task-list-card">
+      <h2 style="margin-top:0;margin-bottom:12px">Tasks</h2>
       <div class="tasks">
         <div class="task-input">
-          <input id="taskInput" type="text" placeholder="Add a focus task (e.g. Write report)" />
-          <button id="addTask" class="primary">Add</button>
+          <input id="taskInput" type="text" placeholder="Add a focus task (e.g. Write report)" aria-label="New task input" />
+          <button id="addTask" class="primary" aria-label="Add Task">Add</button>
         </div>
-        <ul id="taskList" class="task-list"></ul>
+        <ul id="taskList" class="task-list" aria-label="Focus Tasks List"></ul>
       </div>
     </aside>
   </div>
